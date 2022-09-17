@@ -12,6 +12,10 @@ import { Logo } from "../../shared/components";
 import { useNavigate } from "react-router-dom";
 import CategoriesButton from "./CategoriesButton";
 import { Search } from "@mui/icons-material";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import AssignmentIcon from "@mui/icons-material/Assignment";
+import LanguagesSelect from "./LanguageSelect";
+import NotificationButton from "./NotificationButton";
 
 function AppBar() {
   const navigate = useNavigate();
@@ -55,7 +59,7 @@ function AppBar() {
               onClick={() => navigate("/")}
               style={{ cursor: "pointer" }}
             />
-            <Box display={{ xs: "none", sm: "flex" }} columnGap={2}>
+            <Box display={{ xs: "none", md: "flex" }} columnGap={1}>
               <CategoriesButton />
               {navs.map((navItem) => (
                 <Button
@@ -78,7 +82,30 @@ function AppBar() {
                   ),
                 }}
                 placeholder="Search"
+                sx={{ width: "250px" }}
               />
+              <Button
+                variant="text"
+                sx={{
+                  border: "3px solid #EEEEEE",
+                  minWidth: "44px",
+                  borderRadius: "10px",
+                }}
+              >
+                <MoreHorizIcon color="primary" />
+              </Button>
+              <Button
+                variant="text"
+                color="primary"
+                startIcon={<AssignmentIcon color="primary" />}
+                sx={{ fontWeight: 600 }}
+              >
+                Placement Test
+              </Button>
+              <Box ml={2} display="flex">
+                <LanguagesSelect />
+                <NotificationButton />
+              </Box>
             </Box>
           </Box>
         </Toolbar>

@@ -13,13 +13,14 @@ function CategoriesButton() {
   };
 
   return (
-    <Box mx={2}>
+    <Box mx={2} display="flex">
       <Button
         variant="text"
         color="primary"
         startIcon={<GridViewIcon color="primary" />}
         endIcon={!open ? <KeyboardArrowDownIcon /> : <KeyboardArrowUp />}
         onClick={(e) => setAnchorEl(e.currentTarget)}
+        sx={{ fontWeight: 600 }}
       >
         Categories
       </Button>
