@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   AppBar as MuiAppBar,
   Box,
   Button,
+  IconButton,
   InputAdornment,
   TextField,
   Toolbar,
@@ -11,42 +12,41 @@ import { Container } from "@mui/system";
 import { Logo } from "../../shared/components";
 import { useNavigate } from "react-router-dom";
 import CategoriesButton from "./CategoriesButton";
+import Drawer from "./Drawer";
 import { Search } from "@mui/icons-material";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import LanguagesSelect from "./LanguageSelect";
 import NotificationButton from "./NotificationButton";
+import { UserMenu } from ".";
+import { navs } from "../../constants";
+import MenuIcon from "@mui/icons-material/Menu";
 
 function AppBar() {
   const navigate = useNavigate();
-  const navs = [
-    {
-      label: "Courses",
-      path: "courses",
-    },
-    {
-      label: "Blogsd",
-      path: "blogs",
-    },
-    {
-      label: "Contact Us",
-      path: "contact-us",
-    },
-  ];
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
 
   return (
-    <MuiAppBar
-      position="sticky"
-      color="inherit"
-      sx={{ boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.15);" }}
-    >
-      <Container maxWidth="lg">
-        <Toolbar
-          disableGutters
-          variant="dense"
-          sx={{ alignItems: "center", py: 0.5 }}
-        >
-          <Box display="flex" alignItems="center" columnGap={2}>
+    <>
+      <MuiAppBar
+        position="sticky"
+        color="inherit"
+        sx={{ boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.15);" }}
+      >
+        <Container sx={{ maxWidth: "1290px !important" }}>
+          <Toolbar
+            disableGutters
+            variant="dense"
+            sx={{
+              alignItems: "center",
+              py: 0.5,
+              justifyContent: { xs: "space-between", md: "center" },
+            }}
+          >
             <Logo
               width={{
                 md: "85px",
@@ -57,8 +57,16 @@ function AppBar() {
                 xs: "41px",
               }}
               onClick={() => navigate("/")}
-              style={{ cursor: "pointer" }}
+              style={{ cursor: "pointer", marginRight: "13px" }}
             />
+            <IconButton
+              color="primary"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ display: { md: "none" } }}
+            >
+              <MenuIcon />
+            </IconButton>
             <Box display={{ xs: "none", md: "flex" }} columnGap={1}>
               <CategoriesButton />
               {navs.map((navItem) => (
@@ -82,7 +90,7 @@ function AppBar() {
                   ),
                 }}
                 placeholder="Search"
-                sx={{ width: "250px" }}
+                sx={{ width: "250px", display: { xs: "none", lg: "block " } }}
               />
               <Button
                 variant="text"
@@ -102,15 +110,17 @@ function AppBar() {
               >
                 Placement Test
               </Button>
-              <Box ml={2} display="flex">
+              <Box ml={2} display="flex" columnGap={2}>
                 <LanguagesSelect />
                 <NotificationButton />
+                <UserMenu />
               </Box>
             </Box>
-          </Box>
-        </Toolbar>
-      </Container>
-    </MuiAppBar>
+          </Toolbar>
+        </Container>
+      </MuiAppBar>
+      <Drawer open={mobileOpen} onClose={handleDrawerToggle} />
+    </>
   );
 }
 

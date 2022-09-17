@@ -13,7 +13,7 @@ function CategoriesButton() {
   };
 
   return (
-    <Box mx={2} display="flex">
+    <Box mx={2} display="flex" justifyContent="center">
       <Button
         variant="text"
         color="primary"
