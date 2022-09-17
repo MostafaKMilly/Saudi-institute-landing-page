@@ -66,6 +66,16 @@ export const theme = createTheme({
         root: {
           textTransform: "initial",
         },
+        contained: {
+          color: primaryColor.main,
+          background: "#1e5b6342",
+          "&:hover": {
+            background: "#1e5b6342",
+          },
+          "&:active": {
+            background: "#1e5b6342",
+          },
+        },
       },
     },
   },
