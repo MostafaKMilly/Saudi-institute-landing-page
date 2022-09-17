@@ -7,7 +7,8 @@ function BaseLayout() {
   return (
     <Box>
       <AppBar />
-      <Container maxWidth="xl">
+
+      <Container sx={{ maxWidth: "1080px !important", my: 10 }}>
         <Outlet />
       </Container>
     </Box>

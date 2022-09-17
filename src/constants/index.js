@@ -12,3 +12,14 @@ export const navs = [
     path: "contact-us",
   },
 ];
+
+export const categories = [
+  { title: "AZ", subTitle: "English Language" },
+  { title: "AZ", subTitle: "English Language" },
+  { title: "AZ", subTitle: "English Language" },
+  { title: "AZ", subTitle: "English Language" },
+  { title: "AZ", subTitle: "English Language" },
+  { title: "AZ", subTitle: "English Language" },
+  { title: "AZ", subTitle: "English Language" },
+  { title: "AZ", subTitle: "English Language" },
+];
