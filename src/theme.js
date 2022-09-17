@@ -23,12 +23,17 @@ export const theme = createTheme({
   },
   typography: {
     allVariants: {
-      fontFamily: "gotham",
+      fontFamily: "Montserrat",
+      fontWeight: 500,
     },
   },
   components: {
     MuiCssBaseline: {
       styleOverrides: {
+        "& body html": {
+          margin: 0,
+          padding: 0,
+        },
         "& body": {
           background:
             "linear-gradient(252.31deg, #EDFFEE -0.77%, #FFF0E1 25.26%, #FFF6E9 50.14%, #EDFFEE 75.86%, #FFFFFF 100%);",
@@ -48,6 +53,18 @@ export const theme = createTheme({
         "&::-webkit-scrollbar-thumb": {
           backgroundColor: "#bfbfbf",
           borderRadius: "20px",
+        },
+      },
+    },
+    MuiButton: {
+      defaultProps: {
+        disableElevation: true,
+        disableRipple: true,
+        variant: "contained",
+      },
+      styleOverrides: {
+        root: {
+          textTransform: "initial",
         },
       },
     },
